@@ -1,5 +1,7 @@
 # Exceptions
 
+[![](https://jitpack.io/v/pablobastidasv/exceptions.svg)](https://jitpack.io/#pablobastidasv/exceptions)
+
 Utils to exception handle in JEE application. 2 practical exceptions and some mappers 
 to convert exception in nice JSON responses.
 
