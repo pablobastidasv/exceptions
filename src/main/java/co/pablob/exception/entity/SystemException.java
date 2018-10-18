@@ -1,8 +1,5 @@
 package co.pablob.exception.entity;
 
-import javax.ejb.ApplicationException;
-
-@ApplicationException(rollback = true)
 public class SystemException extends RuntimeException {
 
     public SystemException() {

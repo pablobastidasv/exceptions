@@ -13,7 +13,9 @@ import static co.pablob.exception.control.MapperConstants.MESSAGE;
 public abstract class GenericExceptionMapper<T extends Throwable> implements ExceptionMapper<T> {
 
     protected abstract String getDefaultError();
+
     protected abstract String getDefaultMessage();
+
     protected abstract Response.Status getStatus();
 
     @Override
