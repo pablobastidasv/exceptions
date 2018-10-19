@@ -8,12 +8,12 @@ import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 
 @Provider
 public class NotFoundExceptionMapper extends GenericExceptionMapper<NotFoundException> {
-    private static final String DEFAULT_MESSAGE = "Resource was not found";
-    private static final String DEFAULT_ERROR = "resource_not_found";
+    private static final String DEFAULT_CODE = "BEX-404";
+    private static final String DEFAULT_MESSAGE = "Resource not found";
 
     @Override
-    protected String getDefaultError() {
-        return DEFAULT_ERROR;
+    protected String getCode() {
+        return DEFAULT_CODE;
     }
 
     @Override
