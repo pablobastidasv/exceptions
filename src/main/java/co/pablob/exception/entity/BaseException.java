@@ -22,6 +22,10 @@ public abstract class BaseException extends RuntimeException{
     public BaseException() {
     }
 
+    /**
+     * @param code Code that will be added after prefix if this exist
+     * @param message The message to explain the exception cause.
+     */
     public BaseException(String code, String message) {
         super(message);
         if (getPrefix().isEmpty()) {

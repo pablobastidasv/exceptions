@@ -5,6 +5,9 @@ package co.pablob.exception.entity;
  */
 public class SystemException extends BaseException {
 
+    /**
+     * {@inheritDoc}
+     */
     public SystemException(String code, String message) {
         super(code, message);
     }

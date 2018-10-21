@@ -5,6 +5,9 @@ package co.pablob.exception.entity;
  */
 public class BusinessException extends BaseException {
 
+    /**
+     * {@inheritDoc}
+     */
     public BusinessException(String code, String message) {
         super(code, message);
     }
