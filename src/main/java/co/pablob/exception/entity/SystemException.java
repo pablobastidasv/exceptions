@@ -1,18 +1,19 @@
 package co.pablob.exception.entity;
 
-import javax.ejb.ApplicationException;
+/**
+ * this exception work wrapping any system related exception that must to be wrapper to not be cached.
+ */
+public class SystemException extends BaseException {
 
-@ApplicationException(rollback = true)
-public class SystemException extends RuntimeException {
-
-    public SystemException() {
+    /**
+     * {@inheritDoc}
+     */
+    public SystemException(String code, String message) {
+        super(code, message);
     }
 
-    public SystemException(String message, Throwable e) {
-        super(message, e);
-    }
-
-    public SystemException(String message) {
-        super(message);
+    @Override
+    protected String getPrefix() {
+        return "SYS";
     }
 }

@@ -1,14 +1,11 @@
 package co.pablob.exception.entity;
 
-/**
- * this exception work wrapping any business related exception.
- */
-public class BusinessException extends BaseException {
+public class ResourceNotFoundException extends BaseException{
 
     /**
      * {@inheritDoc}
      */
-    public BusinessException(String code, String message) {
+    public ResourceNotFoundException(String code, String message) {
         super(code, message);
     }
 
