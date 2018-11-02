@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import javax.json.Json;
 import javax.json.JsonObject;
+import javax.json.JsonValue;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 
@@ -17,8 +18,8 @@ import co.pablob.exception.entity.BaseException;
  */
 public abstract class GenericExceptionMapper<T extends Throwable> implements ExceptionMapper<T> {
 
-    static final String CODE = "code";
-    static final String MESSAGE = "message";
+    private static final String CODE = "code";
+    private static final String MESSAGE = "message";
 
     /**
      * A return code should be provided to be added on response message
@@ -42,7 +43,7 @@ public abstract class GenericExceptionMapper<T extends Throwable> implements Exc
      */
     @Override
     public Response toResponse(T e) {
-        final String message = Optional.ofNullable(e.getLocalizedMessage()).orElse(getDefaultMessage());
+        final JsonValue message = obtainMessage(e);
         final String code = obtainCode(e);
 
         final JsonObject payload = Json.createObjectBuilder()
@@ -53,6 +54,18 @@ public abstract class GenericExceptionMapper<T extends Throwable> implements Exc
         return Response.status(getStatus())
                 .entity(payload)
                 .build();
+    }
+
+    private JsonValue obtainMessage(T e) {
+        if(e instanceof BaseException){
+            BaseException exception = (BaseException) e;
+            return exception.getJsonValue();
+        } else {
+            return Json.createObjectBuilder()
+                    .add("msg", e.getLocalizedMessage())
+                    .build()
+                    .get("msg");
+        }
     }
 
     /**
